@@ -18,6 +18,7 @@ Se ocupa un guion bajo antes del nombre de la variable para decir que es privada
 Ocupamos el mismo concepto de las variables privadas y lo aplicamos a los métodos, por ejemplo: `def _mi_metodo_privado()`
 
 Ejemplo de un método privado y una variable privada:
-<pre><code>def _nombre_del_metodo_privado (self):
-	self._variable_privada = True</code>
-</pre>
+```python
+def _nombre_del_metodo_privado(self):
+	self._variable_privada = True
+```
