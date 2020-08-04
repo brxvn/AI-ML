@@ -3,3 +3,6 @@ Este es un repo en donde tengo todos los ejercicios y apuntes que hago a lo larg
 <p align="center">
   <img src="https://live.staticflickr.com/65535/49941719687_076b8edd4d_c.jpg" width="600" height="300" >
 </p>
+
+Edit en windows, para ver si el SSH está funcionando.
+
