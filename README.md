@@ -6,4 +6,5 @@ Este es un repo en donde tengo todos los ejercicios y apuntes que hago a lo larg
 
 Edit en windows, para ver si el SSH está funcionando.
 No funciona
+Ya hice que funcionara alv :)
 
