@@ -1,5 +1,7 @@
-#### Definición de clase
+# Programación Orientada a Objetos
 ---
+#### Definición de clase
+
 <pre><code>class &ltnombre_de_la_clase&gt (&ltsuper_clase&gt):
 
 	def __init__(self, &ltparams&gt):
@@ -37,7 +39,7 @@ Programacion defensiva para determinar cuando y como se modifica una clase.
 #### Getters and Setters
 El `@property` decorator nos permite definir un método al cual podemos acceder como si fuera un atributo o sea, podemoa acceder a el con el . (punto)
 
-**Ejemplo con un pedazo de código:**
+##### Ejemplo:
 ```python
 class Employee:
     def __init__(self, first, last):
@@ -86,3 +88,32 @@ def fullname(self, name):
     self.last = last
 ```
 En esta parte del código podemos ver que del el setter y el getter se llaman igual.
+
+#### Herencia
+- Permite modelar una jerarquia de clases
+- Permite compartir comportamiento común en la jerarquia
+- Al padre se le conoce como **SuperClase** y al hijo como **subclase**
+
+##### Ejemplo:
+La manera en que la herencia funciona en python es la siguiente:
+```python
+class Rectangulo:
+
+    def __init__(self, base, altura):
+        self.base = base
+        self.altura = altura
+    
+    def area(self):
+        return self.base * self.altura
+    
+class Cuadrado(Rectangulo): #Al momento de definir la clase entre () le ponemos la super clase
+    def __init__(self, lado): #es lo mismo que cuando en java o c# ponemos el extends y la otra clase
+        super().__init__(lado, lado) #super() nos permite obtener una referencia directa de la superclase
+```
+`super().__init__(lado, lado)` en esta linea de código con `super()` logramos entrar al constructor de la clase **Rectangulo** pasandole los parámetro que necesita y asi poder hacer todo lo que esa clase puede hacer
+
+#### Polimorfismo
+- La habilidad de tomar varias formas
+- En python, nos permite cambiar el comportamiento de una superclase para adaptarlo a la subclase
+
+**La mayor diferencia entre polimorfismo y herencia** es que el primeo busca cambiar el comportamiento de la super clase en la subclase, mientras que en la herencia solo se busca usar la estructura y comportamiento de la superclase en una subclase.
