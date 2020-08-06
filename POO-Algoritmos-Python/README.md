@@ -1,5 +1,13 @@
+<div align="center">
+  <h1>Programación orientada a objetos y Algoritmos con Python</h1>
+</div>
+
+<div align="center"> 
+  <img src="readme_imgs/python_logo" width="250">
+</div>
+
 # Programación Orientada a Objetos
-#### Definición de clase
+### Definición de clase
 
 <pre><code>class &ltnombre_de_la_clase&gt (&ltsuper_clase&gt):
 
@@ -25,20 +33,20 @@ def _nombre_del_metodo_privado(self):
 ```
 Podemos llamar 2 metodos con el mismo nombre siempre y cuando sea uno privado y el otro público asi ` def _un_metodo` y `def un_metodo` pueden ser dos métodos completamente diferentes.
 
-##### Abstracción
+### Abstracción
 - Enfocarnos en información relevante.
 - Separar la información central de los detalles secundarios.
 
-##### Encapsulación
+### Encapsulación
 Programacion defensiva para determinar cuando y como se modifica una clase.
 - Permite agrupar datos y su comportamiento.
 - Controla el acceso a dichos datos.
 - Previene modificaciones no autorizadas.
 
-#### Getters and Setters
+### Getters and Setters
 El `@property` decorator nos permite definir un método al cual podemos acceder como si fuera un atributo o sea, podemoa acceder a el con el . (punto)
 
-##### Ejemplo:
+**Ejemplo:**
 ```python
 class Employee:
     def __init__(self, first, last):
@@ -88,12 +96,13 @@ def fullname(self, name):
 ```
 En esta parte del código podemos ver que del el setter y el getter se llaman igual.
 
-#### Herencia
+### Herencia
 - Permite modelar una jerarquia de clases
 - Permite compartir comportamiento común en la jerarquia
 - Al padre se le conoce como **SuperClase** y al hijo como **subclase**
 
-##### Ejemplo:
+**Ejemplo:**
+
 La manera en que la herencia funciona en python es la siguiente:
 ```python
 class Rectangulo:
@@ -111,7 +120,7 @@ class Cuadrado(Rectangulo): #Al momento de definir la clase entre () le ponemos 
 ```
 `super().__init__(lado, lado)` en esta linea de código con `super()` logramos entrar al constructor de la clase **Rectangulo** pasandole los parámetro que necesita y asi poder hacer todo lo que esa clase puede hacer
 
-#### Polimorfismo
+### Polimorfismo
 - La habilidad de tomar varias formas
 - En python, nos permite cambiar el comportamiento de una superclase para adaptarlo a la subclase
 
@@ -120,7 +129,7 @@ class Cuadrado(Rectangulo): #Al momento de definir la clase entre () le ponemos 
 # Complejidad Algorítmica
 Complejidad Temporal, es una funcion T(n) y determina el tiempo que el algoritmo tarda
 
-#### Crecimiento Asintótico
+### Crecimiento Asintótico
 - No importan las variaciones pequeñas
 - El enfoque se centra en lo suq pasa conforme el tamaño del problema se acerca al infinito.
 - Mejor de los casos, promedio, peor de los casos
