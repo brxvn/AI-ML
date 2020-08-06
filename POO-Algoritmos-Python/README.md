@@ -1,10 +1,22 @@
 <div align="center">
-  <h1>Programación orientada a objetos y Algoritmos con Python</h1>
+  <h1>Programación Orientada a Objetos y Algoritmos con Python</h1>
 </div>
 
 <div align="center"> 
   <img src="readme_imgs/python_logo" width="250">
 </div>
+
+# Introducción al documento
+
+El contenido de este documento esta basado en el curso del mismo nombre dictado por [David Aroesti](https://github.com/jdaroesti) en [Platzi](https://platzi.com/r/karlbehrens/).
+
+# Tabla de Contenidos
+- [Programación Orientada a Objetos](#Programación-Orientada-a-Objetos)
+
+    -[Definición de clase](#Definición-de-clase)
+
+    -[Abstracción](#Abstracción)
+
 
 # Programación Orientada a Objetos
 ### Definición de clase
