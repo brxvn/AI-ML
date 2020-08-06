@@ -1,5 +1,4 @@
 # Programación Orientada a Objetos
----
 #### Definición de clase
 
 <pre><code>class &ltnombre_de_la_clase&gt (&ltsuper_clase&gt):
@@ -117,3 +116,66 @@ class Cuadrado(Rectangulo): #Al momento de definir la clase entre () le ponemos 
 - En python, nos permite cambiar el comportamiento de una superclase para adaptarlo a la subclase
 
 **La mayor diferencia entre polimorfismo y herencia** es que el primeo busca cambiar el comportamiento de la super clase en la subclase, mientras que en la herencia solo se busca usar la estructura y comportamiento de la superclase en una subclase.
+
+# Complejidad Algorítmica
+Complejidad Temporal, es una funcion T(n) y determina el tiempo que el algoritmo tarda
+
+#### Crecimiento Asintótico
+- No importan las variaciones pequeñas
+- El enfoque se centra en lo suq pasa conforme el tamaño del problema se acerca al infinito.
+- Mejor de los casos, promedio, peor de los casos
+- Big O
+- Nada mas importa el término de mayor tamaño
+
+En Big O lo único que importa es el término mas grande sin importar el coeficiente
+
+##### Ley de la suma
+```python
+def f(n):
+
+    for i in range(n):
+        print(i)
+    
+    for i in range(n):
+        print(i)
+
+# O(n) + O(n) = O(n + n) = O(2n) = O(n)
+
+# CRECIMIENTO LINEAL
+
+# La funcion crece en O(n)   
+```
+```python
+def f(n):
+
+    for i in range(n):
+        print(i)
+    
+    for i in range(n * n):
+        print(i)
+
+# O(n) + O(n * n) = O(n + n²) = O(n²)
+
+# FUNCION CUADRATICA  
+```
+#### Ley de la multiplicacion
+```python
+#Cuando se tiene un loop dentro de otro loop las variables se multiplican
+
+def f(n):
+    for i in range(n):
+        for j in range(n):
+            print(i, j)
+
+# O(n) * O(n) = O(n * n) = O(n²)
+```
+#### Recursividad multiple
+```python
+def fibonacci(n):
+    if n == 0 or n == 1:
+        return 1
+    
+    return fibonacci(n-1) + fibonacci(n-2)
+
+#O(2^n)
+```
