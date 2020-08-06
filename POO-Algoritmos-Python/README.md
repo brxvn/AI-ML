@@ -23,6 +23,8 @@ El contenido de este documento esta basado en el curso del mismo nombre dictado 
         - [Ley de la Suma](#Ley-de-la-suma)
         - [Ley de la Multiplicación](#Ley-de-la-multiplicación)
         - [Recursividad multiple](#Recursividad-multiple)
+    - [Clases de complejidad algorítmica](#Clases-de-complejidad-algorítmica)
+- [Algoritmos de búsqueda y Ordenación](#Algoritmos-de-búsqueda-y-Ordenación)
 
 
 # Programación Orientada a Objetos
@@ -219,10 +221,100 @@ Existen distintos tipos de complejidad algorítmica:
 - **O(n!) Factorial:** crece de forma factorial, por lo que al igual que el exponencial su carga es muy alta, por lo que jamas utilizar algoritmos de este tipo.
 
 <div align="center"> 
-  <img src="readme_imgs/big-o-complexity-chart.png" width=100%>
+  <img src="readme_imgs/big-o-complexity-chart.png" width=70%>
 </div>
 También podemos basarnos en esta imagen:
 
 <div align="center"> 
   <img src="readme_imgs/bigO-cheetsheet.jpg" width=100%>
 </div>
+
+# Algoritmos de búsqueda y Ordenación
+Se busca aplicar los conceptos de complejidad algorítmica para la eficiencia de mejorar la resolucion de un problema
+
+### Búsqueda lineal
+La búsqueda lineal es un algoritmo muy sencillo. Consta en buscar si un elemento se encuentra dentro de una lista, array o un sistema ordenado o no ordenado para poder determinar si el elemento se encuentra en el o forma parte de el.
+
+¿Cuál es el peor caso del siguiente código? Si nos fijamos existe un **for loop** que crece según el tamaño de la lista, por lo cual nuestro **Big O es O(n)**.
+```python
+import random
+
+def busqueda_lineal(lista, objetivo):
+    match = False
+
+    for elemento in lista: # tenemos un O(n)
+        if elemento == objetivo:
+            match = True
+            break
+
+    return match
+
+if __name__ == "__main__":
+    tamano_lista = int(input("De que tamaño será la lista?: "))
+    objetivo = int(input("Qué número quieres encontrar?: "))
+    
+    lista = [random.randint(0,100) for i in range(tamano_lista)]
+    
+    encontrado = busqueda_lineal(lista,objetivo)
+    print(lista)
+    print(f"El elemento {objetivo} {'está' if encontrado else 'no está'} en la lista")
+```
+### Búsqueda binaria
+La **búsqueda binaria** toma una estrategia llamada *"Divide y conquista"*, la cual consiste en dividir el problema en 2 en cada iteración. Este algoritmo asume que la lista se encuentra ordenada, por lo que es necesario realizar este paso primero.
+
+La **búsqueda binaria** es uno de los mejores algoritmos que se tienen hoy en día para búsqueda, ya que reduce significativamente el numero de pasos, y así disminuyendo nuestro Big O.
+
+<div align="center">
+  <h4>Caso Promedio</h4>
+</div>
+
+<div align="center"> 
+  <img src="readme_imgs/binary-and-linear-search-animations.gif" width="70%">
+</div>
+
+<div align="center">
+  <h4>Peor de los Casos</h4>
+</div>
+
+<div align="center"> 
+  <img src="readme_imgs/linear-vs-binary-search-worst-case.gif" width="70%">
+</div>
+
+<div align="center">
+  <h4>Mejor de los Casos</h4>
+</div>
+
+<div align="center"> 
+  <img src="readme_imgs/linear-vs-binary-search-best-case.gif" width="70%">
+</div>
+
+Para poder ocupar **búsqueda binaria** tenemos que tener una lista ordenada. Veremos un ejepmlo implementado en código:
+```python
+import random
+
+def busqueda_binaria(lista, start, end, objetivo):
+    print(f"Buscando: {objetivo} entre {lista[start]} y {lista[end - 1]}")
+    if start > end:
+        return False
+    
+    medio = (start + end) // 2
+
+    if lista[medio] == objetivo:
+        return True
+    elif lista[medio] < objetivo:
+        return busqueda_binaria(lista, medio + 1, end, objetivo)
+    else:
+        return busqueda_binaria(lista, start, medio - 1, objetivo)
+
+
+if __name__ == "__main__":
+    tamano_lista = int(input("De que tamaño será la lista?: "))
+    objetivo = int(input("Qué número quieres encontrar?: "))
+    
+    lista = sorted([random.randint(0,100) for i in range(tamano_lista)])
+    
+    encontrado = busqueda_binaria(lista, 0, len(lista), objetivo)
+
+    print(lista)
+    print(f"El elemento {objetivo} {'está' if encontrado else 'no está'} en la lista")
+```
