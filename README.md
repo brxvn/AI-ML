@@ -1,10 +1,11 @@
-# Inteligencia Artificial & Machine Learning
-Este es un repo en donde tengo todos los ejercicios y apuntes que hago a lo largo de esta serie de cursos en Platzi, cada carpeta tiene su propio **README.md** así que aqui no tengo que explicar nada más.
+<div align="center">
+  <h1>Inteligencia Artificial and Machine Learning</h1>
+</div>
+
+Apuntes y más sobre lo que voy aprendiendo de AI and ML. 
+
+Cada folder tiene lo suyo. 
+
 <p align="center">
-  <img src="https://live.staticflickr.com/65535/49941719687_076b8edd4d_c.jpg" width="600" height="300" >
+  <img src="https://64.media.tumblr.com/3f447b0a86c5e640e31ceb227ea738a1/tumblr_mruxalKily1scirugo1_500.gifv" width=100% >
 </p>
-
-Edit en windows, para ver si el SSH está funcionando.
-No funciona
-Ya hice que funcionara alv :)
-
