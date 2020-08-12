@@ -30,6 +30,7 @@ El contenido de este documento esta basado en el curso del mismo nombre dictado 
     - [Ordenamiento de burbuja](#Ordenamiento-de-burbuja)
     - [Ordenamiento por inserción](#Ordenamiento-por-inserción)
     - [Ordenamiento por mezcla](#Ordenamiento-por-mezcla)
+- [Ambientes Virtuales](#Ambientes-Virtuales)
 
 
 # Programación Orientada a Objetos
@@ -454,4 +455,82 @@ def ordenamiento_mezcla(lista):
         print("-" * 20)
 
     return lista 
+```
+# Ambientes Virtuales
+Los ambientes virtuales permiten aislar el ambiente para poder instalar diversas versiones de paquetes. A partir de python 3 se incluye en la librería estándar en el módulo venv. Ningún ingeniero profesional de Python trabaja sin ellos.
+
+Pip permite descargar paquetes de terceros para utilizar en nuestro programa, también permite compartir nuestros paquetes con terceros y también podemos definir la versión del paquete que necesitamos.
+
+Para crear un ambiente virtual primer crearemos el directorio para nuestro proyecto.
+```
+mkdir graficado             # Creamos el directorio del proyecto.
+cd graficado/               # Ingresamos al directorio.
+python3 -m venv env         # Creamos un ambiente virtual en env.
+source env/bin/activate     # Activamos el ambiente.
+```
+Para desactivar el ambiente virtual lo haremos con el siguiente comando.
+```
+deactivate          # Comando para desactivar ambiente Virtual
+```
+# Graficado
+### ¿Por qué graficar?
+Es importante que podamos traducir los datos que nos arrojan nuestro programa en un elemento visual, así podemos realizar reconocimientos de patrones, predicción de series, simplifica la interpretación y la conclusión acerca de los datos.
+<div align="center"> 
+  <img src="readme_imgs/grafico.svg" width="80%">
+</div>
+
+### Graficado Simple
+La librería **Bokeh** permite construir gráficas complejas de manera rápida y con comandos simples, también nos permite exportar a varios formatos como html, notebooks, imágenes, etc. **Bokeh** se puede utilizar en el servidor con **Flask** y **Django**.
+
+**Ejemplo**
+```python
+from bokeh.plotting import figure, output_file, show
+
+if __name__ == "__main__":
+    output_file("graficado_simple.html")
+    fig = figure()
+
+    total_vals = int(input("Cuantos valores quieres graficar?: "))
+    x_vals = list(range(total_vals))
+    y_vals = []
+
+    for x in x_vals:
+        val = int(input(f"Valor Y para {x}: "))
+        y_vals.append(val)
+    
+    fig.line(x_vals, y_vals, line_width=2)
+    show(fig) 
+```
+# Algoritmos de optimización
+### Introducción a la optimización
+El concepto de optimización permite resolver muchos problemas de manera computacional. Cuando pensamos en un algoritmo de optimización debemos definir una función objetivo que debemos maximizar o minimizar, respetando una serie de limitantes que definamos.
+
+### El problema del morral
+<div align="center"> 
+  <img src="readme_imgs/backpack-problem.png" width="70%">
+</div>
+
+Imagina que eres un ladrón que entra a un museo pero tienes un gran problema, nada mas tienes una mochila pero hay muchísimas cosas mas de las que puedes cargar, por lo cual debes determinar cuales artículos puedes cargar y te entregaran el mayor valor posible.
+
+Para este problema sabemos que no podemos dividir los artículos, por lo que nuestra primera aproximación sera evaluar los artículos.
+```python
+def morral(tamano_morral, pesos, valores, n):
+    if n == 0 or tamano_morral == 0:
+        return 0
+    
+    if pesos[n - 1] > tamano_morral:
+        return morral(tamano_morral, pesos, valores, n - 1)
+    
+    return max(valores[n - 1] + morral(tamano_morral - pesos[n - 1], pesos, valores, n - 1),
+        morral(tamano_morral, pesos, valores, n -1))
+
+
+if __name__ == "__main__":
+    valores = [60, 100, 120]
+    pesos = [10, 20, 30]
+    tamano_morral = 5
+    n = len(valores)
+
+    resultado = morral(tamano_morral, pesos, valores, n)
+    print(resultado)
 ```
