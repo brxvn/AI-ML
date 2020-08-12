@@ -31,6 +31,12 @@ El contenido de este documento esta basado en el curso del mismo nombre dictado 
     - [Ordenamiento por inserción](#Ordenamiento-por-inserción)
     - [Ordenamiento por mezcla](#Ordenamiento-por-mezcla)
 - [Ambientes Virtuales](#Ambientes-Virtuales)
+- [Graficado](#Graficado)
+    - [¿Por qué graficar?](#¿Por-qué-graficar?)
+    - [Graficado Simple](#Graficado-Simple)
+- [Algoritmos de optimización](#Algoritmos-de-optimización)
+    - [Introducción a la optimización](#Introducción-a-la-optimización)
+    - [El problema del morral](#El-problema-del-morral)
 
 
 # Programación Orientada a Objetos
