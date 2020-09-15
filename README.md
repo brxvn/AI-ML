@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>Inteligencia Artificial and Machine Learning</h1>
+  <h1>Artificial Inteligence and Machine Learning</h1>
 </div>
 
 Apuntes y más sobre lo que voy aprendiendo de AI and ML. 
