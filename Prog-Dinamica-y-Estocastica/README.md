@@ -68,7 +68,7 @@ Los **caminos aleatorios** son un tipo de simulación que elige aleatoriamente u
 ### Camino de Borrachos
 Este es un ejercicio donde empezando desde un punto 0 aleatoriamente podemos decidir que dirección tomar, dependiendo de las opciones establecidas.
 <div align="center">
-    <img src="readme_imgs/random-walk-1.gif" width=70%>
+    <img src="readme_imgs/random-walk-1.gif" width=50%>
 </div>
 
 Para realizar un ejemplo de aleatoriedad vamos a crear un programa que representara el problema del "Camino de Borrachos". Para esto crearemos 3 clases: uno que represente al **agente que camina**, una que genere una **abstracción de las coordenadas** y una que represente el **plano** en el cual nos estamos moviendo, y vamos a graficar la distancia en la que termina nuestro agente a medida que definimos una mayor cantidad de pasos que puede dar.
@@ -296,5 +296,5 @@ Min = 5.1
 ```
 Y nuestra gráfica en HTML se vera así.
 <div align="center">
-    <img src="readme_imgs/bokeh_plot_borracho.png" width=70%>
+    <img src="readme_imgs/bokeh_plot_borracho.png" width=50%>
 </div>
