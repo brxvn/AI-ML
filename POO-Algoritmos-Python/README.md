@@ -467,12 +467,19 @@ Los ambientes virtuales permiten aislar el ambiente para poder instalar diversas
 
 Pip permite descargar paquetes de terceros para utilizar en nuestro programa, también permite compartir nuestros paquetes con terceros y también podemos definir la versión del paquete que necesitamos.
 
-Para crear un ambiente virtual primer crearemos el directorio para nuestro proyecto.
+Para crear un ambiente virtual en **linux**:
 ```
-mkdir graficado             # Creamos el directorio del proyecto.
-cd graficado/               # Ingresamos al directorio.
-python3 -m venv env         # Creamos un ambiente virtual en env.
-source env/bin/activate     # Activamos el ambiente.
+mkdir *nombre-dir*             			# Creamos el directorio del proyecto.
+cd *nombre-dir*/               			# Ingresamos al directorio.
+python3 -m venv *nombre-ambiente-virtual*       # Creamos un ambiente virtual en env.
+source *nombre-ambiente-virtual*/bin/activate   # Activamos el ambiente.
+```
+Para crear un ambiente virtual en **windows**:
+```
+mkdir *nombre-dir*				# Creamos el directorio del proyecto.
+cd graficado\					# Ingresamos al directorio.
+python -m venv *nombre-ambiente-virtual*	# Creamos un ambiente virtual en env.
+*nombre-ambiente-virtual*\Scripts\activate.bat	# Activamos el ambiente.
 ```
 Para desactivar el ambiente virtual lo haremos con el siguiente comando.
 ```
