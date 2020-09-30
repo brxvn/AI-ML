@@ -24,7 +24,7 @@ El contenido de este documento esta basado en el curso del mismo nombre dictado 
     - [Camino de Borrachos](#Camino-de-Borrachos)
 
 # Programación Dinámica
-### Introducción a la Programación Dinámica
+## Introducción a la Programación Dinámica
 sabiendo que **Programación Dinámica** no esta relacionado con su nombre, lo cierto es que si es una de las técnicas mas poderosas para poder optimizar cierto tipos de problemas.
 
 Los problemas que puede optimizar son aquellos que tienen una **subestructura óptima**, esto significa que una **solución óptima global** se puede encontrar al combinar **soluciones óptimas de subproblemas locales**.
@@ -63,9 +63,9 @@ if __name__ == "__main__":
     print(resultado)
 ```
 # Caminos Aleatorios
-### ¿Qué son los caminos aleatorios?
+## ¿Qué son los caminos aleatorios?
 Los **caminos aleatorios** son un tipo de simulación que elige aleatoriamente una decisión dentro de un conjunto de decisiones válidas. Se utiliza en muchos campos del conocimiento cuando los sistemas **no son deterministas** e incluyen **elementos de aleatoriedad**.
-### Camino de Borrachos
+## Camino de Borrachos
 Este es un ejercicio donde empezando desde un punto 0 aleatoriamente podemos decidir que dirección tomar, dependiendo de las opciones establecidas.
 <div align="center">
     <img src="readme_imgs/random-walk-1.gif" width=50%>
@@ -73,7 +73,7 @@ Este es un ejercicio donde empezando desde un punto 0 aleatoriamente podemos dec
 
 Para realizar un ejemplo de aleatoriedad vamos a crear un programa que representara el problema del "Camino de Borrachos". Para esto crearemos 3 clases: uno que represente al **agente que camina**, una que genere una **abstracción de las coordenadas** y una que represente el **plano** en el cual nos estamos moviendo, y vamos a graficar la distancia en la que termina nuestro agente a medida que definimos una mayor cantidad de pasos que puede dar.
 
-Primero crearemos un ambiente virtual, para ello vamos a la terminar.
+Primero crearemos un ambiente virtual, para ello vamos a la terminal.
 ```
 mkdir camino_de_borramos    # Creamos una carpeta para nuestro proyecto.
 cd camino_de_borrachos      # Ingresamos a la carpeta.
@@ -298,3 +298,191 @@ Y nuestra gráfica en HTML se vera así.
 <div align="center">
     <img src="readme_imgs/bokeh_plot_borracho.png" width=50%>
 </div>
+
+# Programación Estocástica
+## Introducción a la Programación Estocástica
+Un programa es **determinístico** cuando se corre con un mismo _input_ produce el mismo _output_. Los programas **determinísticos** son muy importantes, pero existen problemas que no pueden resolverse de esa manera.
+
+La **programación estocástica** permite introducir aleatoriedad a nuestros programas para crear simulaciones que permiten resolver otro tipo de problemas. Los **programas estocásticos** se aprovechan de que las distribuciones probabilísticas de un problema se conocen o pueden ser estimadas.
+
+## Cálculo de Probabilidades
+La **probabilidad** es una medida de la certidumbre asociada a un evento o suceso futuro y suele expresarse como un número entre 0 y 1. Una **probabilidad** de 0 significa que un suceso jamás sucederá, y en su contraparte una **probabilidad** de 1 significa que está garantizado que sucederá.
+
+Al hablar de **probabilidad** preguntamos qué fracción de todos los posibles eventos tiene la propiedad que buscamos, por eso es importante poder calcular todas las posibilidades de un evento para entender su probabilidad. La probabilidad de que un **evento suceda** y de que **no suceda** es siempre **1**.
+
+- Ley del complemento:
+    - P(A) + P(~A) = 1
+
+- Ley multiplicativa:
+    - P(A y B) = P(A) * P(B)
+
+_**P(A y B) no siempre es igual P(A)*P(B). Solo sucede si los dos eventos son “independientes”.**_
+
+- Ley aditiva:
+    - Mutuamente exclusivos: P(A o B) = P(A) + P(B)
+
+    - No exclusivos: P(A o B) = P(A) + P(B) - P(A y B)
+
+Para ver un ejemplo práctico de las leyes anteriores vamos a realizar un ejercicio de el lanzamiento de un dado de 6 caras:
+
+- La probabilidad de que salga el número **1**:
+    
+    Tenemos **6** posibilidades y el número **1** es una de ellas, por lo que la probabilidad es **1/6**.
+
+- La probabilidad de que nos toque el numero **1 o 2:**
+
+    Tenemos **6** posibilidades y el número **1** es una de ellas y el **2** es otra. El que nos toque un número es **mutuamente exclusivo**, ya que no podemos obtener 2 números al mismo tiempo. Bajo esta premisa utilizaremos la **ley aditiva mutuamente exclusiva.**
+
+    `P(1 o 2) = P(1) + P(2) `
+
+    `P(1 o 2) = 1/6 + 1/6`
+
+    `P(1 o 2) = 2/6`
+
+- La probabilidad de que nos salga el número **1** al menos **1 vez** en **10 lanzamientos**:
+
+    Para cada lanzamiento tenemos la posibilidad de **1/6** de que nos toque **1**, por lo que utilizamos la **ley multiplicativa.**
+
+    `(1/6)^10 = 0.8333`
+
+## Simulación de Probabilidades
+
+En el siguiente ejercicio crearemos un ejemplo de lanzar un dado de 6 caras, esto con el objetivo de obtener la distribución de probabilidades y acercarnos al numero correcto, aplicando la **ley de los grandes números.**
+```py
+import random
+
+def tirar_dado(numero_de_tiros):
+    secuencia_de_tiros = []
+
+    for _ in range(numero_de_tiros):
+        tiro = random.choice([1, 2, 3, 4, 5, 6])
+        secuencia_de_tiros.append(tiro)
+
+    return secuencia_de_tiros
+
+def main(numero_de_tiros, numero_de_intentos):
+    tiros = []
+    for _ in range(numero_de_intentos):
+        secuencia_de_tiros = tirar_dado(numero_de_tiros)
+        tiros.append(secuencia_de_tiros)
+
+    tiros_con_1 = 0
+    for tiro in tiros:
+        if 1 not in tiro:
+            tiros_con_1 += 1 
+
+    probabilidad_tiros_con_1 = tiros_con_1 / numero_de_intentos
+    print(f'Probabilidad de no obtener por lo menos un 1 en {numero_de_tiros} tiros = {probabilidad_tiros_con_1}')
+
+
+
+if __name__ == '__main__':
+    numero_de_tiros = int(input('Cuantas tiros del dado: '))
+    numero_de_intentos = int(input('Cuantas veces correra la simulacion: '))
+
+    main(numero_de_tiros, numero_de_intentos)
+```
+## Inferencia Estadística
+
+Con las simulaciones podemos calcular las probabilidades de eventos complejos sabiendo las probabilidades de eventos simples.
+
+¿Que pasa cuando no sabemos las probabilidades de los eventos simples? Las técnicas de la **inferencia estadística** nos permiten inferir/concluir las propiedades de una población a partir de una muestra **aleatoria.**
+
+_"El principio guía de la **inferencia estadística** es que una muestra aleatoria tiende a exhibir las mismas propiedades que la población de la cual fue extraída."_ - John Guttag
+
+<div align="center"> 
+  <img src="readme_imgs/poblacion-muestra.jpeg" width="40%">
+</div>
+
+### Ley de los grandes números
+
+Con la **ley de los grandes números** podemos ver que en pruebas independientes repetidas con la misma probabilidad p de un resultado, la fracción de desviaciones de p converge a cero conforme la cantidad de pruebas se acerca al infinito.
+
+<div align="center"> 
+  <img src="readme_imgs/grandes-numeros.png" width="30%">
+</div>
+
+### Falacia del apostador
+
+La **falacia del apostador** señala que después de un evento extremo, ocurrirán eventos menos extremos para nivelar la media.
+
+La _regresion a la media_ señala que después de un evento aleatorio extremo, el siguiente evento probablemente será menos extremo.
+
+## Media
+
+La **media** es una medida de tendencia central, comúnmente conocido como promedio. La media de una población se denota con el símbolo μ y la media de una muestra se define con X̄.
+
+<div align="center"> 
+  <img src="readme_imgs/promedio.png" width="30%">
+</div>
+
+Una forma de calcular la media con Python seria la siguiente.
+
+```py
+import random
+
+def media(X):
+    return sum(X) / len(X)
+
+if __name__ == '__main__':
+    X = [random.randint(9, 12) for i in range(20)]
+    mu = media(X)
+
+    print(f'Arreglo X: {X}')
+    print(f'Media = {mu}')
+```
+## Varianza y Desviación Estándar
+
+### Varianza
+
+La **varianza** mide qué tan propagados se encuentran un conjunto de valores aleatorios de su media. Mientras que la **media** nos da una idea de dónde se encuentran los valores, la **varianza** nos dice que tan dispersos se encuentran. La **varianza** siempre debe entenderse con respecto a la media.
+
+<div align="center"> 
+  <img src="readme_imgs/varianza.png" width="30%">
+</div>
+
+### Desviación estándar
+
+La **desviación estándar** es la raíz cuadrada de la **varianza**. Nos permite entender, también, la propagación y se debe entender siempre relacionado con la **media**.
+
+La ventaja sobre la **varianza** es que la desviación estándar está en las mismas unidades que la **media**.
+
+<div align="center"> 
+  <img src="readme_imgs/desviacion-estandar.png" width="30%">
+</div>
+
+Vamos a implementar las funciones de **varianza** y **desviación estándar** en nuestro script ya hecho para la **media.**
+
+```py
+import random
+import math
+
+def media(X):
+    return sum(X) / len(X)
+
+
+def varianza(X):
+    mu = media(X)
+
+    acumulador = 0
+    for x in X:
+        acumulador += (x - mu)**2
+
+    return acumulador / len(X)
+
+
+def desviacion_estandar(X):
+    return math.sqrt(varianza(X))
+
+
+if __name__ == '__main__':
+    X = [random.randint(9, 12) for i in range(20)]
+    mu = media(X)
+    Var = varianza(X)
+    sigma = desviacion_estandar(X)
+
+    print(f'Arreglo X: {X}')
+    print(f'Media = {mu}')
+    print(f'Varianza = {Var}')
+    print(f'Desviacion estandar = {sigma}')
+```
