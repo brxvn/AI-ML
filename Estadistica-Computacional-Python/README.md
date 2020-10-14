@@ -30,6 +30,9 @@ El contenido de este documento esta basado en el curso del mismo nombre dictado 
     - [Media](#Media)
     - [Varianza y Desviación Estándar](#Varianza-y-Desviación-Estándar)
     - [Distribución Normal](#Distribución-Normal)
+- [Simulaciones de Montecarlo](#Simulaciones-de-Montecarlo)
+    - [Simulación de Barajas](#Simulación-de-Barajas)
+    - [Cálculo de PI](#Cálculo-de-PI)
 
 # Programación Dinámica
 ## Introducción a la Programación Dinámica
@@ -521,5 +524,119 @@ Permite calcular probabilidades con la densidad de la distribución normal.
 <div align="center"> 
   <img src="readme_imgs/distribucion-normal-grafico.png" width="70%">
 </div>
+
+# Simulaciones de Montecarlo
+## ¿Qué son las Simulaciones de Montecarlo?
+Permite crear simulaciones para predecir el resultado de un problema, además de convertir problemas determinísticos en problemas estocásticos.
+
+Es utilizado en gran diversidad de áreas, desde la ingeniería hasta la biología y el derecho.
+
+## Simulación de Barajas
+
+```py
+import random
+import collections
+
+PALOS = ["espada", "corazon", "rombo", "trebol"]
+VALORES = ["as", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jota", "reina", "rey"]
+
+def crear_baraja():
+    barajas = []
+    for palo in PALOS:
+        for valor in VALORES:
+            barajas.append((palo, valor))
+
+    return barajas
+
+def obtener_mano(barajas, tamano_mano):
+    mano = random.sample(barajas, tamano_mano)
+
+    return mano
+
+
+def main(tamano_mano, intentos):
+    barajas = crear_baraja()
+
+    manos = []
+
+    for _ in range(intentos):
+        mano = obtener_mano(barajas, tamano_mano)
+        manos.append(mano)
+
+    pares = 0
+
+    for mano in manos:
+        valores = []
+        for carta in mano:
+            valores.append(carta[1])
+        
+        counter = dict(collections.Counter(valores))
+        
+        for val in counter.values():
+            if val == 2:
+                pares += 1
+                break
+    
+    probabilidad_par = pares / intentos
+
+    print(f"La probabilidad de obtener un par en una mano de {tamano_mano} barajas es {probabilidad_par}")
+
+if __name__ == "__main__":
+    tamano_mano = int(input("De cuantas barajas será la mano?: "))
+    intentos = int(input("Cuantos intentos para calcular la probabilidad?: "))
+
+    main(tamano_mano, intentos)
+```
+## Cálculo de PI
+
+Calcularemos PI con puntos al azar esparcidos en un plano cartesiano utilizando los scripts de **desviación estándar** y **media** que creados anteriormente. Queremos tener un **95% de certeza**, entonces para ello realizaremos el cálculo para 1/2 del área de un circulo, optimizando nuestros recursos.
+
+``` py
+import random
+import math
+from estadisticas import des_estandar, media
+
+
+def agujas(num_agujas):
+    dentro_circulo = 0
+
+    for _ in range(num_agujas):
+        x = random.random() * random.choice([-1, 1])
+        y = random.random() * random.choice([-1, 1])
+        distancia_centro = math.sqrt(x**2 + y**2)
+
+        if distancia_centro <= 1:
+            dentro_circulo += 1
+
+    return (4 * dentro_circulo) / num_agujas
+
+
+def estimacion(num_agujas, num_intentos):
+    estimados = []
+
+    for _ in range(num_intentos):
+        estimacion_pi = agujas(num_agujas)
+        estimados.append(estimacion_pi)
+
+    media_estimados = media(estimados)
+    sigma = des_estandar(estimados)
+
+    print(f"Est={round(media_estimados, 5)}, sigma={round(sigma, 5)}, agujas={num_agujas}")
+
+    return (media_estimados, sigma)
+
+
+def estimar_pi(precision, num_intentos):
+    num_agujas = 1000
+    sigma = precision
+
+    while sigma >= precision / 1.96:
+        media, sigma = estimacion(num_agujas, num_intentos)
+        num_agujas *= 2
+
+
+if __name__ == "__main__":
+    estimar_pi(0.01, 1000)
+```
 
 
