@@ -639,4 +639,38 @@ if __name__ == "__main__":
     estimar_pi(0.01, 1000)
 ```
 
+# Muestreo e Intervalos de confianza
+## Muestreo
+El **muestreo** es muy importante cuando no tenemos acceso a toda la población que queremos explorar. Uno de los grandes descubrimientos de la estadística es que las **muestras aleatorias** tienden a mostrar las mismas propiedades de la población objetivo. Hasta este punto todos los **muestreos** que hemos hecho son de tipo **probabilísticos**.
+
+En un **muestreo aleatorio** cualquier miembro de la población tiene la misma probabilidad de ser escogido.
+
+En un **muestreo estratificado** tomamos en consideración las características de la población para partirla en subgrupos y luego tomamos muestras de cada subgrupo, esto incrementa la probabilidad de que el muestreo sea representativo de la población.
+
+## Teorema del Límite Central
+
+El **teorema del límite central** es uno de los teoremas más importantes de la estadística. Establece que **muestras aleatorias** de cualquier distribución van a tener una **distribución normal**. Esto permite entender cualquier distribución como la **distribución normal de sus medias** y eso nos permite aplicar todo lo que sabemos de **distribuciones normales.**
+
+Mientras más muestras obtengamos, mayor será la similitud con la distribución normal. Mientras la muestra sea de mayor tamaño, la desviación estándar será menor.
+
+<div align="center"> 
+  <img src="readme_imgs/limite-central.png" width="70%">
+</div>
+
+# Datos Experimentales
+
+## ¿Cómo trabajar con datos experimentales?
+
+Los **datos experimentales** son aquellos que se generan a través del **método científico**.
+
+- Con el **método científico** es necesario comenzar con una _teoría_ o _hipótesis_ sobre el resultado al que se quiere llegar. 
+- Basado en la _hipótesis_ se debe crear un experimento para **validad** o **falsear** la _hipótesis_.
+- Se **valida** o **falsea** una _hipótesis_ midiendo la diferencia entre las mediciones experimentales y aquellas mediciones predichas por la _hipótesis_.
+
+## Regresión Lineal
+
+La **regresión lineal** nos permite aproximar una función a un conjunto de datos obtenidos de manera experimental. No necesariamente permite aproximar funciones lineales, sino que sus variantes permiten aproximar cualquier **función polinómica.**
+
+Para ver un ejemplo de regresiones lineales en _Python_ en el siguiente enlace puedes acceder a ver un ejemplo: [Collab - Regresión Lineal.](https://colab.research.google.com/drive/1c0Lx0xQyxuoZsnVKZzMFcANykA5VWN5F)
+
 
