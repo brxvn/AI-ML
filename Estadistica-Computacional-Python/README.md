@@ -33,7 +33,12 @@ El contenido de este documento esta basado en el curso del mismo nombre dictado 
 - [Simulaciones de Montecarlo](#Simulaciones-de-Montecarlo)
     - [Simulación de Barajas](#Simulación-de-Barajas)
     - [Cálculo de PI](#Cálculo-de-PI)
-
+- [Muestreo e Intervalos de confianza](#Muestreo-e-Intervalos-de-confianza)
+    - [Muestreo](#Muestreo)
+    - [Teorema del Límite Central](#Teorema-del-Límite-Central)
+- [Datos Experimentales](#Datos-Experimentales)
+    - [¿Cómo trabajar con datos experimentales?](#¿Cómo-trabajar-con-datos-experimentales?)
+    - [Regresión Lineal](#Regresión-Lineal)
 # Programación Dinámica
 ## Introducción a la Programación Dinámica
 sabiendo que **Programación Dinámica** no esta relacionado con su nombre, lo cierto es que si es una de las técnicas mas poderosas para poder optimizar cierto tipos de problemas.
