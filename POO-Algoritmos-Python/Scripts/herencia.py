@@ -15,6 +15,7 @@ class Cuadrado(Rectangulo): #Al momento de definir la clase entre () le ponemos 
 if __name__ == "__main__":
     rectangulo = Rectangulo(3,4)
     print(rectangulo.area())
+    print("hola mundo, just a test")
 
     cuadrado = Cuadrado(5)
     print(cuadrado.area())

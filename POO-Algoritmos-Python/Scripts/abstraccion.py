@@ -1,4 +1,3 @@
-
 class Lavadora:
 
     def __init__(self):
