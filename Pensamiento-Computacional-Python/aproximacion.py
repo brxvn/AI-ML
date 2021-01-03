@@ -5,6 +5,7 @@ respuesta = 0.0
 iteraciones = 0
 while abs(respuesta ** 2 - objetivo) >= epsilon and respuesta <= objetivo:
     respuesta += paso
+    print(respuesta)
     iteraciones += 1
 
 if abs(respuesta ** 2 - objetivo) >= epsilon:
